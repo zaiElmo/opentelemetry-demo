@@ -204,15 +204,15 @@ public final class AdService {
         // Throw 1/10 of the time to simulate a failure when the feature flag is enabled 
         throw new StatusRuntimeException(Status.UNAVAILABLE);
 
-        if (ffClient.getBooleanValue(AD_MANUAL_GC_FEATURE_FLAG, false, evaluationContext)) {
-          logger.warn("Feature Flag " + AD_MANUAL_GC_FEATURE_FLAG + " enabled, performing a manual gc now");
-          GarbageCollectionTrigger gct = new GarbageCollectionTrigger();
-          gct.doExecute();
-        }
+        // if (ffClient.getBooleanValue(AD_MANUAL_GC_FEATURE_FLAG, false, evaluationContext)) {
+        //   logger.warn("Feature Flag " + AD_MANUAL_GC_FEATURE_FLAG + " enabled, performing a manual gc now");
+        //   GarbageCollectionTrigger gct = new GarbageCollectionTrigger();
+        //   gct.doExecute();
+        // }
 
-        AdResponse reply = AdResponse.newBuilder().addAllAds(allAds).build();
-        responseObserver.onNext(reply);
-        responseObserver.onCompleted();
+        // AdResponse reply = AdResponse.newBuilder().addAllAds(allAds).build();
+        // responseObserver.onNext(reply);
+        // responseObserver.onCompleted();
       } catch (StatusRuntimeException e) {
         span.addEvent(
             "Error", Attributes.of(AttributeKey.stringKey("exception.message"), e.getMessage()));
