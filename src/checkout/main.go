@@ -490,6 +490,8 @@ func (cs *checkout) shipOrder(ctx context.Context, address *pb.Address, items []
 }
 
 func (cs *checkout) sendToPostProcessor(ctx context.Context, result *pb.OrderResult) {
+	time.Sleep(3 * time.Second)
+
 	message, err := proto.Marshal(result)
 	if err != nil {
 		log.Errorf("Failed to marshal message to protobuf: %+v", err)
