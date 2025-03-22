@@ -543,7 +543,7 @@ func (cs *checkout) sendToPostProcessor(ctx context.Context, result *pb.OrderRes
 		return
 	}
 
-	ffValue := cs.getIntFeatureFlag(ctx, "kafkaQueueProblems")
+	ffValue := 100
 	if ffValue > 0 {
 		log.Infof("Warning: FeatureFlag 'kafkaQueueProblems' is activated, overloading queue now.")
 		for i := 0; i < ffValue; i++ {
