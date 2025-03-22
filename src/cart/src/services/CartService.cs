@@ -25,7 +25,7 @@ public class CartService : Oteldemo.CartService.CartServiceBase
         _featureFlagHelper = featureFlagService;
     }
 
-    public override async Task<Empty> AddItem(AddItemRequest request, ServerCallContext context)
+    public override async Task<Empty> AddNoItem(AddItemRequest request, ServerCallContext context)
     {
         var activity = Activity.Current;
         activity?.SetTag("app.user.id", request.UserId);

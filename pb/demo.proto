@@ -21,7 +21,7 @@ option go_package = "genproto/oteldemo";
 // -----------------Cart service-----------------
 
 service CartService {
-    rpc AddItem(AddItemRequest) returns (Empty) {}
+    rpc AddNoItem(AddItemRequest) returns (Empty) {}
     rpc GetCart(GetCartRequest) returns (Cart) {}
     rpc EmptyCart(EmptyCartRequest) returns (Empty) {}
 }
