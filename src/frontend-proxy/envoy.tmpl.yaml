@@ -56,7 +56,13 @@ static_resources:
                         - match: { prefix: "/feature" }
                           route: { cluster: flagd-ui }
                         - match: { prefix: "/" }
-                          route: { cluster: frontend-blue }
+                          route: 
+                            weighted_clusters:
+                              clusters:
+                                - name: frontend-blue
+                                  weight: 100
+                                - name: frontend-green
+                                  weight: 0
                 http_filters:
                   - name: envoy.filters.http.fault
                     typed_config:
