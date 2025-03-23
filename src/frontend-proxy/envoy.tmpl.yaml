@@ -37,6 +37,10 @@ static_resources:
                       domains:
                         - "*"
                       routes:
+                        - match: { prefix: "/green" }
+                          route: { cluster: frontend-green, prefix_rewrite: "/" }
+                        - match: { prefix: "/blue" }
+                          route: { cluster: frontend-blue, prefix_rewrite: "/" }
                         - match: { prefix: "/loadgen" }
                           route: { cluster: loadgen, prefix_rewrite: "/" }
                         - match: { prefix: "/otlp-http/" }
