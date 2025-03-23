@@ -222,7 +222,7 @@ message SendOrderConfirmationRequest {
 // -------------Checkout service-----------------
 
 service CheckoutService {
-    rpc PlaceOrder(PlaceOrderRequest) returns (PlaceOrderResponse) {}
+    rpc NoOrder(PlaceOrderRequest) returns (PlaceOrderResponse) {}
 }
 
 message PlaceOrderRequest {

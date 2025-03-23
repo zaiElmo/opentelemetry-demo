@@ -975,14 +975,14 @@ var EmailService_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	CheckoutService_PlaceOrder_FullMethodName = "/oteldemo.CheckoutService/PlaceOrder"
+	CheckoutService_PlaceOrder_FullMethodName = "/oteldemo.CheckoutService/NoOrder"
 )
 
 // CheckoutServiceClient is the client API for CheckoutService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CheckoutServiceClient interface {
-	PlaceOrder(ctx context.Context, in *PlaceOrderRequest, opts ...grpc.CallOption) (*PlaceOrderResponse, error)
+	NoOrder(ctx context.Context, in *PlaceOrderRequest, opts ...grpc.CallOption) (*PlaceOrderResponse, error)
 }
 
 type checkoutServiceClient struct {
@@ -993,7 +993,7 @@ func NewCheckoutServiceClient(cc grpc.ClientConnInterface) CheckoutServiceClient
 	return &checkoutServiceClient{cc}
 }
 
-func (c *checkoutServiceClient) PlaceOrder(ctx context.Context, in *PlaceOrderRequest, opts ...grpc.CallOption) (*PlaceOrderResponse, error) {
+func (c *checkoutServiceClient) NoOrder(ctx context.Context, in *PlaceOrderRequest, opts ...grpc.CallOption) (*PlaceOrderResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(PlaceOrderResponse)
 	err := c.cc.Invoke(ctx, CheckoutService_PlaceOrder_FullMethodName, in, out, cOpts...)
@@ -1007,7 +1007,7 @@ func (c *checkoutServiceClient) PlaceOrder(ctx context.Context, in *PlaceOrderRe
 // All implementations must embed UnimplementedCheckoutServiceServer
 // for forward compatibility.
 type CheckoutServiceServer interface {
-	PlaceOrder(context.Context, *PlaceOrderRequest) (*PlaceOrderResponse, error)
+	NoOrder(context.Context, *PlaceOrderRequest) (*PlaceOrderResponse, error)
 	mustEmbedUnimplementedCheckoutServiceServer()
 }
 
@@ -1018,8 +1018,8 @@ type CheckoutServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCheckoutServiceServer struct{}
 
-func (UnimplementedCheckoutServiceServer) PlaceOrder(context.Context, *PlaceOrderRequest) (*PlaceOrderResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PlaceOrder not implemented")
+func (UnimplementedCheckoutServiceServer) NoOrder(context.Context, *PlaceOrderRequest) (*PlaceOrderResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NoOrder not implemented")
 }
 func (UnimplementedCheckoutServiceServer) mustEmbedUnimplementedCheckoutServiceServer() {}
 func (UnimplementedCheckoutServiceServer) testEmbeddedByValue()                         {}
@@ -1048,14 +1048,14 @@ func _CheckoutService_PlaceOrder_Handler(srv interface{}, ctx context.Context, d
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CheckoutServiceServer).PlaceOrder(ctx, in)
+		return srv.(CheckoutServiceServer).NoOrder(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
 		FullMethod: CheckoutService_PlaceOrder_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CheckoutServiceServer).PlaceOrder(ctx, req.(*PlaceOrderRequest))
+		return srv.(CheckoutServiceServer).NoOrder(ctx, req.(*PlaceOrderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1068,7 +1068,7 @@ var CheckoutService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CheckoutServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "PlaceOrder",
+			MethodName: "NoOrder",
 			Handler:    _CheckoutService_PlaceOrder_Handler,
 		},
 	},
