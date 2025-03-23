@@ -71,6 +71,8 @@ public class ValkeyCartStore : ICartStore
 
     private void EnsureRedisConnected()
     {
+        Thread.Sleep(500);
+
         if (_isRedisConnectionOpened)
         {
             return;
