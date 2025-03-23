@@ -12,6 +12,7 @@ const Header = () => {
         <S.Container>
           <S.NavBarBrand href="/">
             <S.BrandImg />
+            <p>Green</p>
           </S.NavBarBrand>
           <S.Controls>
             <CurrencySwitcher />
