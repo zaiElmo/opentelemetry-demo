@@ -331,8 +331,10 @@ services:
       - "${ENVOY_PORT}:${ENVOY_PORT}"
       - 10000:10000
     environment:
-      - FRONTEND_PORT
-      - FRONTEND_HOST
+      - FRONTEND_BLUE_PORT
+      - FRONTEND_BLUE_HOST
+      - FRONTEND_GREEN_PORT
+      - FRONTEND_GREEN_HOST
       - LOCUST_WEB_HOST
       - LOCUST_WEB_PORT
       - GRAFANA_PORT
@@ -352,7 +354,7 @@ services:
       - FLAGD_UI_HOST
       - FLAGD_UI_PORT
     depends_on:
-      frontend:
+      frontend-blue:
         condition: service_started
       load-generator:
         condition: service_started
@@ -423,7 +425,7 @@ services:
       - FLAGD_HOST
       - FLAGD_OFREP_PORT
     depends_on:
-      frontend:
+      frontend-blue:
         condition: service_started
       flagd:
         condition: service_started
