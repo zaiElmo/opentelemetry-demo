@@ -52,7 +52,7 @@ static_resources:
                         - match: { prefix: "/feature" }
                           route: { cluster: flagd-ui }
                         - match: { prefix: "/" }
-                          route: { cluster: frontend }
+                          route: { cluster: frontend-blue }
                 http_filters:
                   - name: envoy.filters.http.fault
                     typed_config:
@@ -148,18 +148,30 @@ static_resources:
                     socket_address:
                       address: ${OTEL_COLLECTOR_HOST}
                       port_value: ${OTEL_COLLECTOR_PORT_HTTP}
-    - name: frontend
+    - name: frontend-blue
       type: STRICT_DNS
       lb_policy: ROUND_ROBIN
       load_assignment:
-        cluster_name: frontend
+        cluster_name: frontend-blue
         endpoints:
           - lb_endpoints:
               - endpoint:
                   address:
                     socket_address:
-                      address: ${FRONTEND_HOST}
-                      port_value: ${FRONTEND_PORT}
+                      address: ${FRONTEND_BLUE_HOST}
+                      port_value: ${FRONTEND_BLUE_PORT}
+    - name: frontend-green
+      type: STRICT_DNS
+      lb_policy: ROUND_ROBIN
+      load_assignment:
+        cluster_name: frontend-green
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: ${FRONTEND_GREEN_HOST}
+                      port_value: ${FRONTEND_GREEN_PORT}
     - name: image-provider
       type: STRICT_DNS
       lb_policy: ROUND_ROBIN
