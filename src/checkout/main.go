@@ -208,6 +208,8 @@ func main() {
 
 	log.Infof("service config: %+v", svc)
 
+	panic("Absichtlicher Absturz!")
+
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
 	if err != nil {
 		log.Fatal(err)
