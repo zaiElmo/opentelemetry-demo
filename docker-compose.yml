@@ -318,6 +318,7 @@ services:
   frontend-green:
     image: ${IMAGE_NAME}:${DEMO_VERSION}-frontend
     container_name: frontend-green
+    profiles: ["green"]
     build:
       context: ./
       dockerfile: ${FRONTEND_DOCKERFILE}
