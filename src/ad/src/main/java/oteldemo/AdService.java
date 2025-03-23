@@ -147,7 +147,7 @@ public final class AdService {
      *     AdResponse}
      */
     @Override
-    public void getAds(AdRequest req, StreamObserver<AdResponse> responseObserver) {
+    public void getAdsFancy(AdRequest req, StreamObserver<AdResponse> responseObserver) {
       AdService service = AdService.getInstance();
 
       // get the current span in context
