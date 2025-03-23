@@ -147,7 +147,7 @@ public final class AdService {
      *     AdResponse}
      */
     @Override
-    public void getAdsFancy(AdRequest req, StreamObserver<AdResponse> responseObserver) {
+    public void getAds(AdRequest req, StreamObserver<AdResponse> responseObserver) {
       AdService service = AdService.getInstance();
 
       // get the current span in context
@@ -321,8 +321,6 @@ public final class AdService {
   public static void main(String[] args) throws IOException, InterruptedException {
     // Start the RPC server. You shouldn't see any output from gRPC before this.
     logger.info("Ad service starting.");
-    final AdService service = AdService.getInstance();
-    service.start();
-    service.blockUntilShutdown();
+    throw new InterruptedException();
   }
 }
